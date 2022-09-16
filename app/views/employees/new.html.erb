@@ -1,6 +1,7 @@
+<h1>Employees#nwe</h1>
 
 <% if @emp.errors.any? %>
-  <h2>The following errors prevented the emp from being saved</h2>
+  <h2>The following errors prevented the employee from being saved</h2>
   <ul>
     <% @emp.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -9,9 +10,11 @@
 <% end %>
 
 
-<%= form_with(model: @emp, local: true) do |f| %>
 
-  <div>
+
+<%= form_with scope: :employee, url: employees_path, local: true do |f| %>
+
+<div>
     <%= f.label :first_name %><br/>
     <%= f.text_field :first_name %>
   </div>
@@ -64,11 +67,9 @@
 
 
   <p>
-    <%= f.submit "update" %>
+    <%= f.submit %>
   </p>
 
+
+     
 <% end %>
-
-
-   
-
