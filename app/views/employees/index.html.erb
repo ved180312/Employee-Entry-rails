@@ -5,20 +5,23 @@
 <table>
   <thead>
     <tr>
-      <th>name</th>
-      <th>email</th>
-      <th>address</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
+
     <% @emp.each do |emp| %>
       <tr>
-        <td><%= emp.first_name %></td>
+        <td><%= emp.name %></td>
         <td><%= emp.personal_email %></td>
-        <td><%= emp.pincode %>
+        <td><%= emp.full_address %>
       </tr>
     <% end %>
+    
   </tbody>
 </table>
 
