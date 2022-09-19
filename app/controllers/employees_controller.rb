@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_emp, only: [:edit, :update, :show, :destroy]
-
+  
     def index
       @emp=Employee.all
     end
@@ -39,6 +39,9 @@ class EmployeesController < ApplicationController
       redirect_to employees_path
     end
 
+    def error_handle
+    end
+
     private
 
     def emp_params
@@ -47,6 +50,10 @@ class EmployeesController < ApplicationController
 
     def set_emp
       @emp = Employee.find(params[:id])
+  
+    rescue ActiveRecord::RecordNotFound => error
+    redirect_to employees_path
+    flash[:notice] = error
     end
-      
+    
   end

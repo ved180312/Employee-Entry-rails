@@ -1,38 +1,42 @@
 
+<head>
+  <style>
+         table, th, td {
+            border: 1px solid black;
+            font-family: "Times New Roman", Times, serif;
+         }      
+  </style>
+</head>  
 
-<div> <h2>listing employee </h2></div>
 
+||<td><%= link_to 'sign_up new enployee', new_employee_path %> </td> 
+<h2  style=" font-family: "Times New Roman", Times, serif">Listing Employee </h2>
+<body>
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Action</th>
+  </tr>
+      <th style="width:100px">Name</th>
+      <th style="width:250px">Email</th>
+      <th style="width:350px">Address</th>
+      <th colspan= "3">Action</th>
     </tr>
   </thead>
 
   <tbody>
-
     <% @emp.each do |emp| %>
       <tr>
         <td><%= emp.name %></td>
         <td><%= emp.personal_email %></td>
         <td><%= emp.full_address %>
         <td><%= link_to 'Show', employee_path(emp) %></td>
+        <td><%= link_to 'Edit', edit_employee_path(emp) %></td>
+        <td><%= link_to 'Delete', employee_path(emp) , data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
     
   </tbody>
 </table>
-
-
-
-
-
-
-
-
+</body>
 
 
 
