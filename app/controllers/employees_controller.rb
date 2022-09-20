@@ -15,6 +15,9 @@ class EmployeesController < ApplicationController
     def create
       @emp = Employee.new(emp_params)
       if @emp.save
+        
+        EmployeeMailer.signup_confirmation(@emp).deliver_later
+
         flash[:notice] = "Employee was created successfully."
         redirect_to employees_path
       else
@@ -52,8 +55,8 @@ class EmployeesController < ApplicationController
       @emp = Employee.find(params[:id])
   
     rescue ActiveRecord::RecordNotFound => error
-    redirect_to employees_path
-    flash[:notice] = error
+      redirect_to employees_path
+      flash[:notice] = error
     end
     
   end
